@@ -29,7 +29,7 @@ def get_count():
   return delta.days
 
 def get_kaoyan():
-  next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
+  next = datetime.strptime(str(date.today().year) + "-" + start_date, "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
   return (next - today).days
