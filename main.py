@@ -36,6 +36,19 @@ def get_birthday():
     next = next.replace(year=next.year + 1)
   return (next - today).days
 
+def get_chuanyi():
+  url = "http://d1.weather.com.cn/zs_index/101110200.html?"
+  head ={}
+  params= {}
+  params={'enc':'utf-8'}
+  head = {'Referer':'http://www.weather.com.cn/','User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
+  res = requests.get(url,headers=head)
+  res.encoding = res.apparent_encoding
+  a = res.text[17:-11]
+  data=eval(a)
+  yf = data['ct_des_s']
+  return yf
+
 def get_words():
   words = requests.get("https://api.shadiao.pro/chp")
   if words.status_code != 200:
